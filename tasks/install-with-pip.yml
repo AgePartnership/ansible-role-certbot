@@ -1,0 +1,10 @@
+---
+- name: Install certbot and dns plugins (if required) with pip
+  pip:
+    name: "{{ ['certbot'] + (certbot_dns_plugins|map('regex_replace','(.*)', 'certbot-dns-\\1')|list) }}"
+    state: latest
+    virtualenv: "{{certbot_dir}}"
+
+- name: Set Certbot script variable.
+  set_fact:
+    certbot_script: "{{certbot_dir}}/bin/certbot"

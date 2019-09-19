@@ -2,10 +2,13 @@
 - import_tasks: include-vars.yml
 
 - import_tasks: install-with-package.yml
-  when: not certbot_install_from_source
+  when: not certbot_install_from_source and not certbot_install_with_pip
 
 - import_tasks: install-from-source.yml
-  when: certbot_install_from_source
+  when: certbot_install_from_source and not certbot_install_with_pip
+
+- import_tasks: install-with-pip.yml
+  when: certbot_install_with_pip
 
 - include_tasks: create-cert-standalone.yml
   with_items: "{{ certbot_certs }}"

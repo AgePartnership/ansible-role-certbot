@@ -34,5 +34,11 @@ certbot_repo: https://github.com/certbot/certbot.git
 certbot_version: master
 certbot_keep_updated: true
 
+# To install via pip into a virtualenv set this variable to yes
+# It also allows you to easily install the DNS plugins
+certbot_install_with_pip: false
+certbot_dns_plugins: [] 
+
 # Where to put Certbot when installing from source.
+# Or the virtualenv when installed via pip
 certbot_dir: /opt/certbot
