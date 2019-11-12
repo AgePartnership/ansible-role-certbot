@@ -6,4 +6,4 @@
     job: "sleep $((RANDOM*10800/32768)) && {{ certbot_script }} renew {{ certbot_auto_renew_options }}"
     minute: "{{ certbot_auto_renew_minute }}"
     hour: "{{ certbot_auto_renew_hour }}"
-    user: "{{ certbot_auto_renew_user }}"
+    user: "{{ cron_user|default('deploybot') }}"
