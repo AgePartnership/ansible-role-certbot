@@ -4,6 +4,8 @@
     name: "{{ ['certbot'] + (certbot_dns_plugins|map('regex_replace','^(.*)$', 'certbot-dns-\\1')|list) }}"
     state: latest
     virtualenv: "{{certbot_dir}}"
+  environment:
+    PATH: "{{ certbot_pip_env_path }}{{ ansible_env.PATH }}"
 
 - name: Set Certbot script variable.
   set_fact:
