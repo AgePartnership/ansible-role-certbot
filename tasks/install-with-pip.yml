@@ -5,7 +5,7 @@
     state: latest
     virtualenv: "{{certbot_dir}}"
   environment:
-    PATH: "{{ certbot_pip_env_path }}{{ ansible_env.PATH }}"
+    PATH: "{{ certbot_pip_env_path }}:{{ ansible_env.PATH }}"
 
 - name: Set Certbot script variable.
   set_fact:
